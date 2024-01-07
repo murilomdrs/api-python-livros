@@ -22,12 +22,11 @@ livros = [
 ]
 
 # Criar
-# decorator para atribuir a rota
-app.route('/livros', methods=['POST'])
+@app.route('/livros', methods=['POST'])
 def incluir_novo_livro():
   novo_livro = request.get_json()
   livros.append(novo_livro)
-  return jsonify(livros)
+  return jsonify(livros), 201
 
 # Consultar (todos)
 @app.route('/livros', methods=['GET'])
